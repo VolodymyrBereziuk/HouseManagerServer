@@ -39,7 +39,7 @@ public class UserDeviceDAO {
          DateFormat dateFormat = new SimpleDateFormat("yyyy MM dd HH:mm:ss");  
          String startDate = dateFormat.format(userDevice.getStartTime());
          String finishDate = dateFormat.format(userDevice.getFinishTime());
-           String sql  = "INSERT INTO UserDevice VALUES (" + userDevice.getUser().getId() + "," + userDevice.getDevice().getId() + ", '" + startDate + "', '" + finishDate + "' )";
+           String sql  = "INSERT INTO UserDevice VALUES (" + userDevice.getUser().getId() + "," + userDevice.getDevice().getId() + ", '" + startDate + "', '" + finishDate + "'"+ userDevice.getIsOwned()+ " )";
         try {
             int executeUpdate = this.statement.executeUpdate(sql);
             System.out.println(executeUpdate);
@@ -65,7 +65,7 @@ public class UserDeviceDAO {
         ResultSet result = null;
 
         String sql
-                = "SELECT idUser, idDevice, startTime, finishTime  FROM UserDevice";
+                = "SELECT idUser, idDevice, startTime, finishTime, isOwned  FROM UserDevice";
         try {
             result = this.statement.executeQuery(sql);
             while (result.next()) {

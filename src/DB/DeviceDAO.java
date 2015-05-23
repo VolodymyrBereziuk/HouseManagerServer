@@ -33,7 +33,7 @@ public class DeviceDAO {
 
     public synchronized void insertDevice(Device device) {
         String sql
-                = "INSERT INTO Device VALUES (" + device.getId() + ",'" + device.getName() + "','" + device.getInformation() + "'," + device.getIsEnable() + "," + device.getIdRoom() + ")";
+                = "INSERT INTO Device VALUES (" + device.getId() + ",'" + device.getName() + "','" + device.getInformation() + "'," + device.getIsMeasured() + "," + device.getIsEnable() + "," + device.getIdRoom() + "," + device.getIdDriver() + ")";
         try {
             int executeUpdate = this.statement.executeUpdate(sql);
             System.out.println(executeUpdate);
@@ -59,11 +59,11 @@ public class DeviceDAO {
         Device device = null;
         ResultSet result = null;
         String sql
-                = "SELECT id,name, information, isEnable , idRoom FROM Device WHERE id=" + id;
+                = "SELECT id,name, information,isMeasured, isEnable , idRoom ,idDriver FROM Device WHERE id=" + id;
         try {
             result = this.statement.executeQuery(sql);
             while (result.next()) {
-                device = new Device(result.getInt("id"), result.getString("name"), result.getString("information"), result.getInt("isEnable"), result.getInt("idRoom"));
+                device = new Device(result.getInt("id"), result.getString("name"), result.getString("information"),result.getInt("isMeasured"), result.getInt("isEnable"), result.getInt("idRoom"), result.getInt("idDriver"));
             }
             result.close();
         } catch (SQLException ex) {
@@ -76,11 +76,11 @@ public class DeviceDAO {
         List<Device> deviceList = new ArrayList<Device>();
         ResultSet result = null;
         String sql
-                = "SELECT id,name, information, isEnable, idRoom FROM Device";
+                = "SELECT id,name, information,isMeasured, isEnable , idRoom ,idDriver FROM Device";
         try {
             result = this.statement.executeQuery(sql);
             while (result.next()) {
-                Device device = new Device(result.getInt("id"), result.getString("name"), result.getString("information"), result.getInt("isEnable"), result.getInt("idRoom"));
+                Device device = new Device(result.getInt("id"), result.getString("name"), result.getString("information"),result.getInt("isMeasured"), result.getInt("isEnable"), result.getInt("idRoom"), result.getInt("idDriver"));
                 deviceList.add(device);
             }
             result.close();

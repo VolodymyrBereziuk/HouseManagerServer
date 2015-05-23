@@ -16,11 +16,23 @@ public class Device implements Serializable {
     private int id;
     private String name;
     private String information;
+    private int isMeasured;
     private int isEnable;
     private int idRoom;
+    private int idDriver;
 
     public Device(int id) {
         this.id = id;
+    }
+
+    public Device(int id, String name, String information, int isMeasured, int isEnable, int idRoom, int idDriver) {
+        this.id = id;
+        this.name = name;
+        this.information = information;
+        this.isMeasured = isMeasured;
+        this.isEnable = isEnable;
+        this.idRoom = idRoom;
+        this.idDriver = idDriver;
     }
 
     public Device(String name, String information, int isEnable, int idRoom) {
@@ -51,12 +63,20 @@ public class Device implements Serializable {
         return information;
     }
 
+    public int getIsMeasured() {
+        return isMeasured;
+    }
+
     public int getIsEnable() {
         return isEnable;
     }
 
     public int getIdRoom() {
         return idRoom;
+    }
+
+    public int getIdDriver() {
+        return idDriver;
     }
 
     public void setId(int id) {
@@ -71,12 +91,20 @@ public class Device implements Serializable {
         this.information = information;
     }
 
+    public void setIsMeasured(int isMeasured) {
+        this.isMeasured = isMeasured;
+    }
+
     public void setIsEnable(int isEnable) {
         this.isEnable = isEnable;
     }
 
-    public void set(int idRoom) {
+    public void setIdRoom(int idRoom) {
         this.idRoom = idRoom;
+    }
+
+    public void setIdDevice(int idDriver) {
+        this.idDriver = idDriver;
     }
 
     public void print() {
